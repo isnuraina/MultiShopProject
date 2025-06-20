@@ -1,3 +1,4 @@
+using Bigon.WebUI.AppCode.Services;
 using Microsoft.EntityFrameworkCore;
 using MultiShopProject.Context;
 
@@ -20,6 +21,12 @@ namespace MultiShopProject
                             opt.MigrationsHistoryTable("Migrations");
                         });
                 });
+            builder.Services.AddRouting(cfg => cfg.LowercaseUrls = true);
+
+            builder.Services.Configure<EmailOptions>(
+   builder.Configuration.GetSection("emailAccount"));
+            builder.Services.AddSingleton<IEmailService, EmailService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
