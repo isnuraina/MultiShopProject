@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Bigon.WebUI.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 using MultiShopProject.Models.Entities;
 
 namespace MultiShopProject.Context
@@ -19,5 +20,7 @@ namespace MultiShopProject.Context
         public DbSet<Sponsor> Sponsors { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Subscriber> Subscribers { get; set; }
+
     }
 }

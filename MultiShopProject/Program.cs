@@ -11,7 +11,6 @@ namespace MultiShopProject
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<DataContext>(
                 cfg =>
                 {

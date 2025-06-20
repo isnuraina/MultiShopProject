@@ -209,14 +209,20 @@
                             <div class="col-md-4 mb-5">
                                 <h5 class="text-secondary text-uppercase mb-4">Newsletter</h5>
                                 <p>Duo stet tempor ipsum sit amet magna ipsum tempor est</p>
-                                <form action="">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Your Email Address">
+
+                        <form method="post" class="contact-form">
+                            <div class="input-group subscribe-form">
+                                <input type="text" class="form-control email subscribe" placeholder="Your Email Address" name="email" id="Email" value="">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary">Sign Up</button>
+                                    <button type="submit" class="btn btn-primary button submit" name="commit" id="Subscribe">Subscribe</button>
                                         </div>
                                     </div>
                                 </form>
+
+                
+
+             
+                
                                 <h6 class="text-secondary text-uppercase mt-4 mb-3">Follow Us</h6>
                                 <div class="d-flex">
                                     <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
@@ -264,3 +270,28 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+
+<script>
+
+    $(document).ready(function(){
+        $('form.contact-form').submit(function(e){
+            e.preventDefault();
+            let formData=new FormData(e.currentTarget);
+            $.ajax({
+                url: '@Url.Action("Subscribe", "Home")',
+                type:'POST',
+                data:formData,
+                processData:false,
+                contentType:false,
+                success:function(response){
+                    console.log(response)
+                },
+                error:function(response){
+                    console.error(response);
+                }
+            })
+        });
+    });
+
+</script>
